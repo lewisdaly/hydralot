@@ -11,20 +11,24 @@ exports.currentPrice = functions.https.onRequest((request, response) => {
 });
 
 
+exports.random = functions.https.onRequest((request, response) => {
+  response.send({value: Math.floor(Math.random() * Math.floor(100))});
+});
+
 exports.activity = functions.https.onRequest((request, response) => {
+  
+  return fs.collection('logs').orderBy('date', 'desc').limit(1).get()
+    .then(snapshot => {
+      const values = [];
+      snapshot.forEach(doc => {
+        values.push(doc.data().usage);
+      });
+
+      response.send({value: values[0]});
+    });
 
   //TODO: lookup in the database: `/logs`
   //Array of timestamps and utilization (0-100%)
-  response.send([
-    {date:1529150490,usage:40},
-    {date:1529150500,usage:41},
-    {date:1529150510,usage:42},
-    {date:1529150520,usage:100},
-    {date:1529150530,usage:100},
-    {date:1529150540,usage:10},
-    {date:1529150550,usage:14},
-    { date: 1529150560,usage:16},
-  ])
 });
 
 
