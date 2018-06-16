@@ -16,14 +16,14 @@ exports.activity = functions.https.onRequest((request, response) => {
   //TODO: lookup in the database: `/logs`
   //Array of timestamps and utilization (0-100%)
   response.send([
-    {date:12345,usage:40},
-    {date:12346,usage:41},
-    {date:12347,usage:42},
-    {date:12348,usage:100},
-    {date:12349,usage:100},
-    {date:12350,usage:10},
-    {date:12351,usage:14},
-    {date:12352,usage:16},
+    {date:1529150490,usage:40},
+    {date:1529150500,usage:41},
+    {date:1529150510,usage:42},
+    {date:1529150520,usage:100},
+    {date:1529150530,usage:100},
+    {date:1529150540,usage:10},
+    {date:1529150550,usage:14},
+    { date: 1529150560,usage:16},
   ])
 });
 
@@ -33,8 +33,8 @@ exports.warningLog = functions.https.onRequest((request, response) => {
   //TODO: lookup in the database: `/warnings`
   //Array of timestamps and warning messages
   response.send([
-    { date: 12345, message: "Crane tipped over" },
-    { date: 12345, message: "Maximum usage exeeded" },
+    { date: 1529150490, message: "Crane tipped over" },
+    { date: 1529150500, message: "Maximum usage exeeded" },
   ]);
 });
 
