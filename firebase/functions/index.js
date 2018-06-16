@@ -2,6 +2,7 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
 const fs = admin.firestore();
+const nodemailer = require('nodemailer');
 
 exports.currentPrice = functions.https.onRequest((request, response) => {
   //TODO: lookup all of the events in the database, and calculate the price from them;
@@ -20,6 +21,9 @@ exports.activity = functions.https.onRequest((request, response) => {
     {date:12347,usage:42},
     {date:12348,usage:100},
     {date:12349,usage:100},
+    {date:12350,usage:10},
+    {date:12351,usage:14},
+    {date:12352,usage:16},
   ])
 });
 
@@ -43,16 +47,13 @@ exports.addUsageLog = functions.https.onRequest((request, response) => {
 });
 
 
-exports.addWarning = functions.https.onRequest((request, response) => {
+exports.addWarningLog = functions.https.onRequest((request, response) => {
   const { date, message } = request.body;
 
   return fs.collection(`warnings`).doc(`${date}`).set({ message })
+    .then(() => sendEmail(message))
     .then(() => response.send(true));
 });
-
-//TODO: look for warnings in database, and send slack/email alerts
-
-
 
 exports.clearLogs = functions.https.onRequest((request, response) => {
   return Promise.all([
@@ -63,6 +64,48 @@ exports.clearLogs = functions.https.onRequest((request, response) => {
 });
 
 
+
+/**
+ * Utils
+ * 
+ */
+
+function sendEmail(message) {
+  return new Promise((resolve, reject) => {
+    const user = functions.config().gmail.username;
+    const pass = functions.config().gmail.password;
+    const destination = functions.config().gmail.destination;
+    console.log("email, password, dest", user, pass, destination);
+
+    var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user,
+        pass,
+      }
+    });
+
+    var mailOptions = {
+      from: user,
+      to: destination ,
+      subject: 'You have an alert from HydralIOT',
+      text: message
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+        reject(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+        resolve(info.response);
+      }
+    }); 
+  });
+}
+
+
+//ref: https://firebase.google.com/docs/firestore/manage-data/delete-data
 function deleteCollection(db, collectionPath, batchSize) {
   var collectionRef = db.collection(collectionPath);
   var query = collectionRef.orderBy('__name__').limit(batchSize);
@@ -73,10 +116,10 @@ function deleteCollection(db, collectionPath, batchSize) {
 }
 
 function deleteQueryBatch(db, query, batchSize, resolve, reject) {
-  query.get()
+  return query.get()
     .then((snapshot) => {
       // When there are no documents left, we are done
-      if (snapshot.size == 0) {
+      if (snapshot.size === 0) {
         return 0;
       }
 
@@ -91,14 +134,14 @@ function deleteQueryBatch(db, query, batchSize, resolve, reject) {
       });
     }).then((numDeleted) => {
       if (numDeleted === 0) {
-        resolve();
-        return;
+        resolve(true);
+        return true;
       }
 
       // Recurse on the next process tick, to avoid
       // exploding the stack.
       process.nextTick(() => {
-        deleteQueryBatch(db, query, batchSize, resolve, reject);
+        return deleteQueryBatch(db, query, batchSize, resolve, reject);
       });
     })
     .catch(reject);

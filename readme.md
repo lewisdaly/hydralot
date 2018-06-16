@@ -14,7 +14,7 @@ View the dashboard [here](/)
 #### Sending a usage log:
 
 curl -X POST \
-  http://localhost:5000/hydralot-8025a/us-central1/addUsageLog \
+  https://us-central1-hydralot-8025a.cloudfunctions.net/addUsageLog \
   -H 'Content-Type: application/json' \
   -d '{
 	"date":123456,
@@ -25,7 +25,7 @@ curl -X POST \
 #### Sending a warning message
 
 curl -X POST \
-  http://localhost:5000/hydralot-8025a/us-central1/addWarningLog \
+  https://us-central1-hydralot-8025a.cloudfunctions.net/addWarningLog \
   -H 'Content-Type: application/json' \
   -d '{
 	"date":123456,
@@ -34,13 +34,19 @@ curl -X POST \
 
 
 #### Get Current Price
-curl http://localhost:5000/hydralot-8025a/us-central1/currentPrice
+curl https://us-central1-hydralot-8025a.cloudfunctions.net/currentPrice
 
 #### Get activity log
-curl http://localhost:5000/hydralot-8025a/us-central1/activity
+curl https://us-central1-hydralot-8025a.cloudfunctions.net/activity
 
 #### Get Warning Log
-curl http://localhost:5000/hydralot-8025a/us-central1/warningLog
+curl https://us-central1-hydralot-8025a.cloudfunctions.net/warningLog
 
 #### Clear all data
-curl http://localhost:5000/hydralot-8025a/us-central1/clearLogs
+curl https://us-central1-hydralot-8025a.cloudfunctions.net/clearLogs
+
+
+
+## Configure Env Variables
+source .env
+firebase functions:config:set gmail.username="lwdaly92@gmail.com" gmail.password=$GMAIL_PASSWORD gmail.destination='m0t3h2f3w7g4v1d0@vessels-tech.slack.com'
