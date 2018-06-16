@@ -33,6 +33,9 @@ curl -X POST \
 }'
 
 
+curl -X POST https://us-central1-hydralot-8025a.cloudfunctions.net/addWarningLog -H 'Content-Type: application/json' -d '{"date":123456, "message":"Exceeded maximum capacity"}'
+
+
 #### Get Current Price
 curl https://us-central1-hydralot-8025a.cloudfunctions.net/currentPrice
 
