@@ -1,0 +1,106 @@
+[debug] [2018-06-16T09:19:34.586Z] ----------------------------------------------------------------------
+[debug] [2018-06-16T09:19:34.588Z] Command:       /usr/local/Cellar/node/10.0.0/bin/node /usr/local/bin/firebase deploy --only functions
+[debug] [2018-06-16T09:19:34.588Z] CLI Version:   3.18.6
+[debug] [2018-06-16T09:19:34.588Z] Platform:      darwin
+[debug] [2018-06-16T09:19:34.588Z] Node Version:  v10.0.0
+[debug] [2018-06-16T09:19:34.589Z] Time:          Sat Jun 16 2018 11:19:34 GMT+0200 (CEST)
+[debug] [2018-06-16T09:19:34.589Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-06-16T09:19:34.598Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-06-16T09:19:34.599Z] > authorizing via signed-in user
+[debug] [2018-06-16T09:19:34.601Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/hydralot-8025a  
+  
+ Sat Jun 16 2018 11:19:34 GMT+0200 (CEST)
+[debug] [2018-06-16T09:19:35.356Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-16T09:19:35.357Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/hydralot-8025a/tokens  
+  
+ Sat Jun 16 2018 11:19:35 GMT+0200 (CEST)
+[debug] [2018-06-16T09:19:36.108Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'hydralot-8025a'...
+[info] 
+[info] i  deploying functions
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script.
+[debug] [2018-06-16T09:19:39.984Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "firebase-admin": "~5.12.1",
+    "firebase-functions": "^1.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.12.0",
+    "eslint-plugin-promise": "^3.6.0"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-06-16T09:19:39.985Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/hydralot-8025a?view=CONSUMER_VIEW  
+  
+ Sat Jun 16 2018 11:19:39 GMT+0200 (CEST)
+[debug] [2018-06-16T09:19:39.985Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/hydralot-8025a?view=CONSUMER_VIEW  
+  
+ Sat Jun 16 2018 11:19:39 GMT+0200 (CEST)
+[debug] [2018-06-16T09:19:41.231Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-16T09:19:41.232Z] <<< HTTP RESPONSE 200
+[warn] ⚠  functions: missing necessary APIs. Enabling now...
+[debug] [2018-06-16T09:19:41.233Z] >>> HTTP REQUEST PATCH https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/hydralot-8025a?updateMask=usageSettings  
+ { usageSettings: { consumerEnableStatus: 'ENABLED' } } 
+ Sat Jun 16 2018 11:19:41 GMT+0200 (CEST)
+[debug] [2018-06-16T09:19:42.877Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-16T09:19:52.882Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/hydralot-8025a?view=CONSUMER_VIEW  
+  
+ Sat Jun 16 2018 11:19:52 GMT+0200 (CEST)
+[debug] [2018-06-16T09:19:54.040Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2018-06-16T09:19:54.041Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/hydralot-8025a  
+  
+ Sat Jun 16 2018 11:19:54 GMT+0200 (CEST)
+[debug] [2018-06-16T09:19:54.950Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-16T09:19:54.950Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/128831982105:getServerAppConfig  
+  
+ Sat Jun 16 2018 11:19:54 GMT+0200 (CEST)
+[debug] [2018-06-16T09:19:55.468Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[info] i  functions: packaged functions (49.71 KB) for uploading
+[debug] [2018-06-16T09:19:55.659Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/hydralot-8025a/locations/us-central1/functions:generateUploadUrl  
+  
+ Sat Jun 16 2018 11:19:55 GMT+0200 (CEST)
+[debug] [2018-06-16T09:20:25.977Z] <<< HTTP RESPONSE 503
+[debug] [2018-06-16T09:20:25.978Z] <<< HTTP RESPONSE BODY {
+  "error": {
+    "code": 503,
+    "message": "The service is currently unavailable.",
+    "status": "UNAVAILABLE"
+  }
+}
+
+[debug] [2018-06-16T09:20:25.982Z] TypeError: Cannot create property 'error' on string '{
+  "error": {
+    "code": 503,
+    "message": "The service is currently unavailable.",
+    "status": "UNAVAILABLE"
+  }
+}
+'
+    at module.exports (/usr/local/lib/node_modules/firebase-tools/lib/responseToError.js:11:16)
+    at Request._callback (/usr/local/lib/node_modules/firebase-tools/lib/api.js:47:25)
+    at Request.self.callback (/usr/local/lib/node_modules/firebase-tools/node_modules/request/request.js:185:22)
+    at Request.emit (events.js:182:13)
+    at Request.EventEmitter.emit (domain.js:442:20)
+    at Request.<anonymous> (/usr/local/lib/node_modules/firebase-tools/node_modules/request/request.js:1157:10)
+    at Request.emit (events.js:182:13)
+    at Request.EventEmitter.emit (domain.js:442:20)
+    at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/firebase-tools/node_modules/request/request.js:1079:12)
+    at Object.onceWrapper (events.js:275:13)
+[error] 
+[error] Error: An unexpected error has occurred.
