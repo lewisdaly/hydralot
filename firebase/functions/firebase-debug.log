@@ -1,0 +1,39 @@
+[debug] [2018-06-16T10:34:20.102Z] ----------------------------------------------------------------------
+[debug] [2018-06-16T10:34:20.104Z] Command:       /Users/ldaly/.nvm/versions/node/v8.11.1/bin/node /Users/ldaly/.nvm/versions/node/v8.11.1/bin/firebase serve --only functions
+[debug] [2018-06-16T10:34:20.104Z] CLI Version:   3.18.4
+[debug] [2018-06-16T10:34:20.104Z] Platform:      darwin
+[debug] [2018-06-16T10:34:20.104Z] Node Version:  v8.11.1
+[debug] [2018-06-16T10:34:20.105Z] Time:          Sat Jun 16 2018 12:34:20 GMT+0200 (CEST)
+[debug] [2018-06-16T10:34:20.105Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-06-16T10:34:20.115Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-06-16T10:34:20.115Z] > authorizing via signed-in user
+[debug] [2018-06-16T10:34:20.116Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/hydralot-8025a  
+  
+ Sat Jun 16 2018 12:34:20 GMT+0200 (CEST)
+[debug] [2018-06-16T10:34:21.021Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-16T10:34:21.022Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/hydralot-8025a/tokens  
+  
+ Sat Jun 16 2018 12:34:21 GMT+0200 (CEST)
+[debug] [2018-06-16T10:34:22.465Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-16T10:34:22.466Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/hydralot-8025a  
+  
+ Sat Jun 16 2018 12:34:22 GMT+0200 (CEST)
+[debug] [2018-06-16T10:34:23.871Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/ldaly/developer/techfest/firebase'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-06-16T10:34:24.382Z] Fetching environment
+[debug] [2018-06-16T10:34:24.383Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/128831982105:getServerAppConfig  
+  
+ Sat Jun 16 2018 12:34:24 GMT+0200 (CEST)
+[debug] [2018-06-16T10:34:27.677Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-16T10:34:27.677Z] Starting @google-cloud/functions-emulator
+[debug] [2018-06-16T10:34:29.247Z] Parsing function triggers
+[info] ✔  functions: currentPrice: http://localhost:5000/hydralot-8025a/us-central1/currentPrice
+[info] ✔  functions: activity: http://localhost:5000/hydralot-8025a/us-central1/activity
+[info] ✔  functions: warningLog: http://localhost:5000/hydralot-8025a/us-central1/warningLog
+[info] ✔  functions: addUsageLog: http://localhost:5000/hydralot-8025a/us-central1/addUsageLog
+[info] ✔  functions: addWarning: http://localhost:5000/hydralot-8025a/us-central1/addWarning
+[info] ✔  functions: clearLogs: http://localhost:5000/hydralot-8025a/us-central1/clearLogs
