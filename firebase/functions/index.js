@@ -42,7 +42,7 @@ exports.warningLog = functions.https.onRequest((request, response) => {
 exports.addUsageLog = functions.https.onRequest((request, response) => {
   const { date, usage } = request.body;
 
-  return fs.collection(`logs`).doc(`${date}`).set({ usage })
+  return fs.collection(`logs`).doc(`${date}`).set({ date, usage })
     .then(() => response.send(true));
 });
 
@@ -50,7 +50,7 @@ exports.addUsageLog = functions.https.onRequest((request, response) => {
 exports.addWarningLog = functions.https.onRequest((request, response) => {
   const { date, message } = request.body;
 
-  return fs.collection(`warnings`).doc(`${date}`).set({ message })
+  return fs.collection(`warnings`).doc(`${date}`).set({ date, message })
     .then(() => sendEmail(message))
     .then(() => response.send(true));
 });
