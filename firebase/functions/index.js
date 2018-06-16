@@ -34,10 +34,22 @@ exports.activity = functions.https.onRequest((request, response) => {
 
 exports.warningLog = functions.https.onRequest((request, response) => {
   
+  return fs.collection('warnings').orderBy('date', 'desc').limit(2).get().then( snapshot => {
+    const valuess=[];
+    snapshot.forEach(doc=>{
+     valuess.push(doc.data().date);
+     valuess.push(doc.data().message);
+    });
+    response.send({value:valuess[0],
+                   value: valuess[1]});
+    //response.send({value:value[1]});
+  
+});
+
   //TODO: lookup in the database: `/warnings`
   //Array of timestamps and warning messages
   response.send([
-    { date: 1529150490, message: "Crane tipped over" },
+   { date: 1529150490, message: "Crane tipped over" },
     { date: 1529150500, message: "Maximum usage exeeded" },
   ]);
 });
