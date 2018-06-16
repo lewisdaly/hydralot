@@ -5,9 +5,21 @@ const fs = admin.firestore();
 const nodemailer = require('nodemailer');
 
 exports.currentPrice = functions.https.onRequest((request, response) => {
-  //TODO: lookup all of the events in the database, and calculate the price from them;
+  //price per warning: 2.00
+  //Price per activity log: 50c
+  const warningPrice = 2.05;
+  const logPrice = 0.01;
 
-  response.send("103.42");
+  return Promise.all([
+    fs.collection('warnings').get().then(snap => snap.size),
+    fs.collection('logs').get().then(snap => snap.size),
+  ])
+  .then(([warningCount, logCount]) => {
+    return warningCount * warningPrice + logCount * logPrice;
+  })
+  .then(price => {
+    response.send(`${price}`);
+  });
 });
 
 
@@ -27,33 +39,20 @@ exports.activity = functions.https.onRequest((request, response) => {
       response.send({value: values[0]});
     });
 
-  //TODO: lookup in the database: `/logs`
-  //Array of timestamps and utilization (0-100%)
 });
 
 
 exports.warningLog = functions.https.onRequest((request, response) => {
-  
-  return fs.collection('warnings').orderBy('date', 'desc').limit(2).get().then( snapshot => {
-    const valuess=[];
-    snapshot.forEach(doc=>{
-     valuess.push(doc.data().date);
-     valuess.push(doc.data().message);
-    });
-    response.send({value:valuess[0],
-                   value: valuess[1]});
-    //response.send({value:value[1]});
-  
-});
 
-  //TODO: lookup in the database: `/warnings`
-  //Array of timestamps and warning messages
-  response.send([
-   { date: 1529150490, message: "Crane tipped over" },
-    { date: 1529150500, message: "Maximum usage exeeded" },
-  ]);
-});
+  return fs.collection('warnings').orderBy('date', 'asc').get()
+  .then(snapshot => {
 
+    const values = [];
+    snapshot.forEach(doc => values.push(doc.data()));
+    console.log("found values");
+    response.send(values);
+  });
+});
 
 exports.addUsageLog = functions.https.onRequest((request, response) => {
   const { date, usage } = request.body;

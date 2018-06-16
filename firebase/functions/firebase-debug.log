@@ -1,49 +1,49 @@
-[debug] [2018-06-16T13:36:16.923Z] ----------------------------------------------------------------------
-[debug] [2018-06-16T13:36:16.924Z] Command:       /Users/ldaly/.nvm/versions/node/v8.11.1/bin/node /Users/ldaly/.nvm/versions/node/v8.11.1/bin/firebase serve --only functions
-[debug] [2018-06-16T13:36:16.925Z] CLI Version:   3.18.4
-[debug] [2018-06-16T13:36:16.925Z] Platform:      darwin
-[debug] [2018-06-16T13:36:16.925Z] Node Version:  v8.11.1
-[debug] [2018-06-16T13:36:16.925Z] Time:          Sat Jun 16 2018 15:36:16 GMT+0200 (CEST)
-[debug] [2018-06-16T13:36:16.925Z] ----------------------------------------------------------------------
+[debug] [2018-06-16T17:52:53.641Z] ----------------------------------------------------------------------
+[debug] [2018-06-16T17:52:53.643Z] Command:       /Users/ldaly/.nvm/versions/node/v8.11.1/bin/node /Users/ldaly/.nvm/versions/node/v8.11.1/bin/firebase serve --only functions
+[debug] [2018-06-16T17:52:53.643Z] CLI Version:   3.18.4
+[debug] [2018-06-16T17:52:53.643Z] Platform:      darwin
+[debug] [2018-06-16T17:52:53.643Z] Node Version:  v8.11.1
+[debug] [2018-06-16T17:52:53.644Z] Time:          Sat Jun 16 2018 19:52:53 GMT+0200 (CEST)
+[debug] [2018-06-16T17:52:53.644Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-06-16T13:36:16.937Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-06-16T13:36:16.937Z] > authorizing via signed-in user
-[debug] [2018-06-16T13:36:16.939Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2018-06-16T13:36:16.939Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+[debug] [2018-06-16T17:52:53.655Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-06-16T17:52:53.655Z] > authorizing via signed-in user
+[debug] [2018-06-16T17:52:53.657Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-06-16T17:52:53.657Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
  { refresh_token: '1/KXFYwvSfSkMbnUkzpwdPWHb1GMSJbOBiuTHk6zHiYoA',
   client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
   client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
   grant_type: 'refresh_token',
   scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
- Sat Jun 16 2018 15:36:16 GMT+0200 (CEST)
-[debug] [2018-06-16T13:36:17.146Z] <<< HTTP RESPONSE 200
-[debug] [2018-06-16T13:36:17.162Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/hydralot-8025a  
+ Sat Jun 16 2018 19:52:53 GMT+0200 (CEST)
+[debug] [2018-06-16T17:52:53.790Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-16T17:52:53.807Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/hydralot-8025a  
   
- Sat Jun 16 2018 15:36:17 GMT+0200 (CEST)
-[debug] [2018-06-16T13:36:17.842Z] <<< HTTP RESPONSE 200
-[debug] [2018-06-16T13:36:17.843Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/hydralot-8025a/tokens  
+ Sat Jun 16 2018 19:52:53 GMT+0200 (CEST)
+[debug] [2018-06-16T17:52:54.491Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-16T17:52:54.491Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/hydralot-8025a/tokens  
   
- Sat Jun 16 2018 15:36:17 GMT+0200 (CEST)
-[debug] [2018-06-16T13:36:18.409Z] <<< HTTP RESPONSE 200
-[debug] [2018-06-16T13:36:18.410Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/hydralot-8025a  
+ Sat Jun 16 2018 19:52:54 GMT+0200 (CEST)
+[debug] [2018-06-16T17:52:58.265Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-16T17:52:58.266Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/hydralot-8025a  
   
- Sat Jun 16 2018 15:36:18 GMT+0200 (CEST)
-[debug] [2018-06-16T13:36:19.121Z] <<< HTTP RESPONSE 200
+ Sat Jun 16 2018 19:52:58 GMT+0200 (CEST)
+[debug] [2018-06-16T17:52:59.084Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from '/Users/ldaly/developer/techfest/firebase'...
 [info] 
 [info] i  functions: Preparing to emulate functions.
-[debug] [2018-06-16T13:36:19.868Z] Fetching environment
-[debug] [2018-06-16T13:36:19.871Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/128831982105:getServerAppConfig  
+[debug] [2018-06-16T17:52:59.834Z] Fetching environment
+[debug] [2018-06-16T17:52:59.836Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/128831982105:getServerAppConfig  
   
- Sat Jun 16 2018 15:36:19 GMT+0200 (CEST)
-[debug] [2018-06-16T13:36:20.344Z] <<< HTTP RESPONSE 200
-[debug] [2018-06-16T13:36:20.345Z] Starting @google-cloud/functions-emulator
-[debug] [2018-06-16T13:36:21.911Z] Parsing function triggers
-[info] ✔  functions: random: http://localhost:5000/hydralot-8025a/us-central1/random
-[info] ✔  functions: addWarningLog: http://localhost:5000/hydralot-8025a/us-central1/addWarningLog
-[info] ✔  functions: activity: http://localhost:5000/hydralot-8025a/us-central1/activity
+ Sat Jun 16 2018 19:52:59 GMT+0200 (CEST)
+[debug] [2018-06-16T17:53:00.313Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-16T17:53:00.314Z] Starting @google-cloud/functions-emulator
+[debug] [2018-06-16T17:53:01.875Z] Parsing function triggers
 [info] ✔  functions: currentPrice: http://localhost:5000/hydralot-8025a/us-central1/currentPrice
+[info] ✔  functions: random: http://localhost:5000/hydralot-8025a/us-central1/random
+[info] ✔  functions: activity: http://localhost:5000/hydralot-8025a/us-central1/activity
 [info] ✔  functions: warningLog: http://localhost:5000/hydralot-8025a/us-central1/warningLog
 [info] ✔  functions: addUsageLog: http://localhost:5000/hydralot-8025a/us-central1/addUsageLog
+[info] ✔  functions: addWarningLog: http://localhost:5000/hydralot-8025a/us-central1/addWarningLog
 [info] ✔  functions: clearLogs: http://localhost:5000/hydralot-8025a/us-central1/clearLogs
